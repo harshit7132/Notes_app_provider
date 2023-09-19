@@ -37,8 +37,8 @@ class NoteProvider extends ChangeNotifier {
   }
 
   //delete notes
-  deleteNotes(noteModel note_id) async {
-    var check = await db.deleteNotes(note_id as int);
+  deleteNotes(int note_id) async {
+    var check = await db.deleteNotes(note_id );
     if (check) {
       arrNotes = await db.fetchAllNotes();
       notifyListeners();

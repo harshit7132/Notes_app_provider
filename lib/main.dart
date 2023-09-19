@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:notes_app_provider_new/Add%20note%20page.dart';
 import 'package:notes_app_provider_new/Provider/Note%20Provider.dart';
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -47,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   deleteNotes(int note_id) {
     context
         .read<NoteProvider>()
-        .deleteNotes(noteModel(note_id: note_id as int));
+        .deleteNotes(note_id);
   }
 
   @override
@@ -77,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             MaterialPageRoute(
                                 builder: (context) => add_Notes_page(
                                     isupDate: true,
+                                    note_id: currentData.note_id,
                                     title: currentData.title,
                                     desc: currentData.desc)));
                       },
@@ -87,9 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: Text(currentData.title.toString()),
                         subtitle: Text(currentData.desc.toString()),
                         trailing: IconButton(
-                            onPressed: () async {
-                              deleteNotes(currentData as int);
-                              getInitialNotes();
+                            onPressed: ()  {
+                              deleteNotes(currentData.note_id as int);
+                             print(currentData);
                             },
                             icon: Icon(Icons.delete)),
                       ),

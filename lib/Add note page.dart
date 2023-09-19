@@ -23,10 +23,10 @@ class add_Notes_page extends StatelessWidget {
           .addNotes(noteModel(title: title, desc: desc));
     }
 
-    updateNotes(int? note_id) {
+    updateNotes(int? note_id,String title, String desc) {
       context
           .read<NoteProvider>()
-          .updateNotes(noteModel(note_id: note_id));
+          .updateNotes(noteModel(note_id: note_id,title: title,desc: desc));
     }
 
     initController() {
@@ -55,8 +55,7 @@ class add_Notes_page extends StatelessWidget {
                 var title = titleController.text.toString();
                 var desc = descController.text.toString();
                 if (isupDate) {
-                  print(note_id.toString());
-                  updateNotes(note_id);
+                  updateNotes(note_id,title,desc);
                   Navigator.pop(context);
                 } else {
                   addNotes(title, desc);
