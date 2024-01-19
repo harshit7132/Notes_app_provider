@@ -11,12 +11,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -43,9 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   deleteNotes(int note_id) {
-    context
-        .read<NoteProvider>()
-        .deleteNotes(note_id);
+    context.read<NoteProvider>().deleteNotes(note_id);
   }
 
   @override
@@ -64,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: double.infinity,
                     color: Colors.green
                     //.primaries[Random().nextInt(Colors.primaries.length)]
-                        ,
+                    ,
                     child: InkWell(
                       onTap: () {
                         //updating notes
@@ -86,9 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: Text(currentData.title.toString()),
                         subtitle: Text(currentData.desc.toString()),
                         trailing: IconButton(
-                            onPressed: ()  {
+                            onPressed: () {
                               deleteNotes(currentData.note_id as int);
-                             print(currentData);
+                              print(currentData);
                             },
                             icon: Icon(Icons.delete)),
                       ),
@@ -100,8 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => add_Notes_page(isupDate: false)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => add_Notes_page(isupDate: false)));
         },
         child: Icon(Icons.add),
       ),
